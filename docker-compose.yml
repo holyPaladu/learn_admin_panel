@@ -1,0 +1,40 @@
+version: "3.8"
+
+networks:
+  admin-networks:
+    driver: bridge
+
+services:
+  admin-panel:
+    build:
+      context: ./admin-panel
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./admin-panel/.env
+    depends_on:
+      - postgres-db
+    networks:
+      - admin-networks
+    volumes:
+      - ./admin-panel:/app
+      - /app/node_modules
+    command: npm run start
+
+  postgres-db:
+    image: postgres:15
+    container_name: postgres_admin
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: admindb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - admin-networks
+
+volumes:
+  pgdata:
