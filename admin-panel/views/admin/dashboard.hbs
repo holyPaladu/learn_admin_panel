@@ -1,5 +1,29 @@
-{{!< admin/layout}}
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Admin Panel - {{title}}</title>
+    <link rel='stylesheet' href='/css/admin.css' />
+  </head>
+  <body>
+    <nav class='admin-nav'>
+      <h1>Admin Panel</h1>
+      <ul>
+        <li><a href='/admin/dasboard'>Dashboard</a></li>
+        <li><a href='/admin/users'>Users</a></li>
+      </ul>
+    </nav>
 
-<h2>{{title}}</h2>
+    <main class='admin-content'>
+      <h2>{{title}}</h2>
+      <p>Welcome to the admin dashboard!</p>
 
-<p>Welcome to the admin dashboard!</p>
+      <h3>User List</h3>
+      <ul>
+        {{#each users}}
+          <li>{{name}} - {{role}}</li>
+        {{/each}}
+      </ul>
+    </main>
+  </body>
+</html>

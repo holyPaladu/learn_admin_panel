@@ -1,13 +1,21 @@
-{{!< admin/layout}}
-
-<div class='form-container'>
-  <h2>Admin Registration</h2>
-  <form action='/admin/register' method='POST'>
-    <label for='admin-key'>Enter Admin Key:</label>
-    <input type='text' id='admin-key' name='admin-key' required />
-    <button type='submit'>Submit</button>
-  </form>
-  {{#if error}}
-    <p class='error-message'>{{error}}</p>
-  {{/if}}
-</div>
+<html lang='ru'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Регистрация</title>
+    <link rel='stylesheet' href='/css/auth.css' />
+  </head>
+  <body>
+    <div class='form-container'>
+      <h2>Admin Registration</h2>
+      <form action='/admin/register' method='POST'>
+        <label for='admin-key'>Enter Admin Key:</label>
+        <input type='text' id='admin-key' name='admin-key' required />
+        <button type='submit'>Submit</button>
+      </form>
+      {{#if error}}
+        <p class='error-message'>{{error}}</p>
+      {{/if}}
+    </div>
+  </body>
+</html>

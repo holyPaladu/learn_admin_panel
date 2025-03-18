@@ -10,7 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     UsersModule,
-    TypeOrmModule.forRoot(databaseConfig),
+    // TypeOrmModule.forRoot(databaseConfig),
     AdminModule,
     ConfigModule.forRoot(),
   ],

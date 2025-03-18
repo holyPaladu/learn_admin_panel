@@ -39,10 +39,10 @@ export class AdminController {
 
   // Защищённый маршрут: админ-панель
   @Get('dashboard')
-  @UseGuards(AdminGuard) // Guard защищает этот маршрут
+  @UseGuards(AdminGuard)
   @Render('admin/dashboard')
   dashboard() {
-    return { title: 'Admin Dashboard' };
+    return { title: 'Admin ', users: [{ name: 'Auez', role: 'client' }] };
   }
 
   // Защищённый маршрут: выход из админ-панели
