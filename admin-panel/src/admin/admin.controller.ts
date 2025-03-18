@@ -16,7 +16,7 @@ export class AdminController {
   @Get('register')
   @Render('admin/register')
   showRegisterForm() {
-    return { error: null }; // Показываем форму без ошибки
+    return { error: null, layout: 'layouts/auth' }; // Показываем форму без ошибки
   }
 
   // Незащищённый маршрут: обработка формы регистрации
@@ -42,7 +42,7 @@ export class AdminController {
   @UseGuards(AdminGuard)
   @Render('admin/dashboard')
   dashboard() {
-    return { title: 'Admin ', users: [{ name: 'Auez', role: 'client' }] };
+    return { title: 'Admin', layout: 'layouts/layout' };
   }
 
   // Защищённый маршрут: выход из админ-панели

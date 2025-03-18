@@ -5,18 +5,12 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Admin Panel - {{title}}</title>
     <link rel='stylesheet' href='/css/admin.css' />
+    <link rel='stylesheet' href='/css/main.css' />
   </head>
   <body>
-    <nav class='admin-nav'>
-      <h1>Admin Panel</h1>
-      <ul>
-        <li><a href='/admin/dasboard'>Dashboard</a></li>
-        <li><a href='/admin/users'>Users</a></li>
-      </ul>
-    </nav>
-
+    {{> sidebar}}  
     <main class='admin-content'>
-      {{{body}}}
+      {{{body}}}  
     </main>
   </body>
 </html>

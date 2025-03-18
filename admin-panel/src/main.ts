@@ -14,7 +14,7 @@ async function bootstrap() {
   // Указываем директорию для шаблонов
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   // Регистрируем паршалы (partials), если они используются
-  hbs.registerPartials(join(__dirname, '..', 'views/partials'));
+  hbs.registerPartials(join(__dirname, '..', 'views', 'partials'));
   // Устанавливаем Handlebars в качестве шаблонизатора
   app.setViewEngine('hbs');
 

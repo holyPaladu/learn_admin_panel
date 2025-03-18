@@ -13,8 +13,6 @@ export class AdminGuard implements CanActivate {
     const userKey = request.cookies?.['admin-key'];
     const correctKey = process.env.ADMIN_KEY;
 
-    console.log('Admin Key:', userKey);
-
     if (userKey === correctKey) {
       return true;
     }
