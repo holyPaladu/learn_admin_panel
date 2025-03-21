@@ -61,14 +61,22 @@ export class AdminController {
   @Get('users')
   @UseGuards(AdminGuard)
   @Render('admin/users')
-  async users(@Req() req: Request, @Query('success') success?: string) {
+  async users(@Req() req: Request, @Query() query: any) {
+    let alert: any = null;
+
+    if (query.success === 'true') {
+      alert = { type: 'success', message: 'Пользователь успешно создан!' };
+    } else if (query.error === 'true') {
+      alert = { type: 'error', message: 'Ошибка при создании пользователя!' };
+    }
+
     const users = await this.userService.getAll();
     return {
       title: 'Users list',
       layout: 'layouts/layout',
       users,
       currentPath: req.url,
-      success: success === 'true',
+      alert,
     };
   }
 
@@ -90,9 +98,13 @@ export class AdminController {
     return { title: 'Создать пользователя', layout: 'layouts/layout' };
   }
   @Post('user/create')
-  @Redirect('/admin/users?success=true')
-  async createUser(@Body() bd: CreateUserDto) {
-    await this.userService.createUser(bd);
+  async createUser(@Res() res: Response, @Body() bd: CreateUserDto) {
+    try {
+      await this.userService.createUser(bd);
+      return res.redirect('/admin/users?success=true');
+    } catch (error) {
+      return res.redirect('/admin/users?error=true');
+    }
   }
   @Post('user/:id/edit')
   async editUser(

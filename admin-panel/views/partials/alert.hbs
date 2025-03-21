@@ -1,5 +1,5 @@
-{{#if success}}
-  <div id='success-alert' class='alert alert-success'>
+{{#if alert}}
+  <div id='alert-box' class='alert alert-{{alert.type}}'>
     <svg
       width='20'
       height='20'
@@ -20,8 +20,8 @@
         </clipPath>
       </defs>
     </svg>
-    <p>Пользователь успешно создан!</p>
-    <button onclick="document.getElementById('success-alert').remove()">
+    <p>{{alert.message}}</p>
+    <button onclick="document.getElementById('alert-box').remove()">
       <svg
         width='20'
         height='20'
@@ -45,10 +45,10 @@
   </div>
 
   <script>
-    setTimeout(() => { const alert = document.getElementById('success-alert');
-    if (alert) { alert.classList.add('hide'); setTimeout(() => alert.remove(),
-    500); } // Удаляем `?success=true` без перезагрузки const newUrl =
-    window.location.origin + window.location.pathname + window.location.hash;
+    setTimeout(() => { const alertBox = document.getElementById('alert-box'); if
+    (alertBox) { alertBox.classList.add('hide'); setTimeout(() =>
+    alertBox.remove(), 500); } const newUrl = window.location.origin +
+    window.location.pathname + window.location.hash;
     window.history.replaceState({}, '', newUrl); }, 3000);
   </script>
 {{/if}}

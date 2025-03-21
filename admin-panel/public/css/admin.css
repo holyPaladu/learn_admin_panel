@@ -15,6 +15,7 @@ body {
   --bg-main: #f7f8fa;
   --shadow-base: #606b800d;
   --shadow-success: #16a34a33;
+  --shadow-error: #dc262633;
   --base-100: #dadee6;
   --base-300: #98a1b3;
   --base-400: #7a8499;
@@ -24,6 +25,10 @@ body {
   --success-600: #16a34a;
   --success-700: #15803d;
   --success-alpha-50: #16a34a80;
+  --error-50: #fef2f2;
+  --error-600: #dc2626;
+  --error-700: #b91c1c;
+  --error-alpha-50: #dc262680;
 }
 
 .admin-content {
@@ -93,26 +98,36 @@ body {
     opacity 0.5s ease-in-out,
     transform 0.5s ease-in-out;
 }
-.alert svg path,
-.alert svg defs,
-.alert svg rect {
-  fill: var(--success-600);
+.alert p {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: 600;
 }
-.alert__info {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-/* Зеленый алерт */
 .alert-success {
   background-color: var(--success-50);
   color: var(--success-700);
   border: 1px solid var(--success-alpha-50);
   box-shadow: 0px 4px 6px 0px var(--shadow-success);
 }
-.alert-success p {
-  font-size: 0.625rem;
-  line-height: 1rem;
-  font-weight: 600;
+.alert-success svg path,
+.alert-success svg defs,
+.alert-success svg rect {
+  fill: var(--success-600);
+}
+.alert-error {
+  background-color: var(--error-50);
+  color: var(--error-700);
+  border: 1px solid var(--error-alpha-50);
+  box-shadow: 0px 4px 6px 0px var(--shadow-error);
+}
+.alert-error svg path,
+.alert-error svg defs,
+.alert-error svg rect {
+  fill: var(--error-600);
+}
+.alert__info {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 /* Анимация исчезновения */
 .alert.hide {
@@ -128,6 +143,12 @@ body {
   cursor: pointer;
   color: inherit;
   margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.alert button svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 /*Sidebar admin*/
