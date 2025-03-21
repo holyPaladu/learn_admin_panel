@@ -11,3 +11,9 @@ button {
   display: inline-block; /* Чтобы работали размеры */
   cursor: pointer; /* Вернуть курсор */
 }
+select {
+  appearance: none; /* Убирает стандартный стиль */
+  -webkit-appearance: none; /* Для Safari */
+  -moz-appearance: none; /* Для Firefox */
+  cursor: pointer;
+}

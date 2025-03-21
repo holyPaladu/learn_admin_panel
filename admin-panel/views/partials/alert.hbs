@@ -1,0 +1,54 @@
+{{#if success}}
+  <div id='success-alert' class='alert alert-success'>
+    <svg
+      width='20'
+      height='20'
+      viewBox='0 0 20 20'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      class='alert__info'
+    >
+      <g clip-path='url(#clip0_2409_5)'>
+        <path
+          d='M9.99984 1.66669C5.39984 1.66669 1.6665 5.40002 1.6665 10C1.6665 14.6 5.39984 18.3334 9.99984 18.3334C14.5998 18.3334 18.3332 14.6 18.3332 10C18.3332 5.40002 14.5998 1.66669 9.99984 1.66669ZM10.8332 14.1667H9.1665V9.16669H10.8332V14.1667ZM10.8332 7.50002H9.1665V5.83335H10.8332V7.50002Z'
+          fill='black'
+        />
+      </g>
+      <defs>
+        <clipPath id='clip0_2409_5'>
+          <rect width='20' height='20' fill='white' />
+        </clipPath>
+      </defs>
+    </svg>
+    <p>Пользователь успешно создан!</p>
+    <button onclick="document.getElementById('success-alert').remove()">
+      <svg
+        width='20'
+        height='20'
+        viewBox='0 0 20 20'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <g clip-path='url(#clip0_2409_8)'>
+          <path
+            d='M15.8332 5.34169L14.6582 4.16669L9.99984 8.82502L5.3415 4.16669L4.1665 5.34169L8.82484 10L4.1665 14.6584L5.3415 15.8334L9.99984 11.175L14.6582 15.8334L15.8332 14.6584L11.1748 10L15.8332 5.34169Z'
+            fill='black'
+          />
+        </g>
+        <defs>
+          <clipPath id='clip0_2409_8'>
+            <rect width='20' height='20' fill='white' />
+          </clipPath>
+        </defs>
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    setTimeout(() => { const alert = document.getElementById('success-alert');
+    if (alert) { alert.classList.add('hide'); setTimeout(() => alert.remove(),
+    500); } // Удаляем `?success=true` без перезагрузки const newUrl =
+    window.location.origin + window.location.pathname + window.location.hash;
+    window.history.replaceState({}, '', newUrl); }, 3000);
+  </script>
+{{/if}}

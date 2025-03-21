@@ -33,13 +33,25 @@
       {{#if (eq key 'name')}}
         <div class='base__field'>
           <label for='{{key}}'>{{key}}</label>
-          <input type='text' name='{{key}}' id='{{key}}' value='{{value}}' />
+          <input
+            type='text'
+            name='{{key}}'
+            id='{{key}}'
+            value='{{value}}'
+            required
+          />
         </div>
       {{/if}}
       {{#if (eq key 'email')}}
         <div class='base__field'>
           <label for='{{key}}'>{{key}}</label>
-          <input type='text' name='{{key}}' id='{{key}}' value='{{value}}' />
+          <input
+            type='text'
+            name='{{key}}'
+            id='{{key}}'
+            value='{{value}}'
+            required
+          />
         </div>
       {{/if}}
     {{/each}}

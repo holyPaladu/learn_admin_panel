@@ -11,10 +11,13 @@ import {
   Delete,
   HttpException,
   HttpStatus,
+  Query,
+  Redirect,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AdminGuard } from './guards/admin.guards';
 import { UsersService } from 'src/users/users.service';
+import { CreateUserDto } from 'src/users/dto/user.dto';
 
 @Controller('admin')
 export class AdminController {
@@ -58,15 +61,17 @@ export class AdminController {
   @Get('users')
   @UseGuards(AdminGuard)
   @Render('admin/users')
-  async users(@Req() req: Request) {
+  async users(@Req() req: Request, @Query('success') success?: string) {
     const users = await this.userService.getAll();
     return {
       title: 'Users list',
       layout: 'layouts/layout',
       users,
       currentPath: req.url,
+      success: success === 'true',
     };
   }
+
   @Get('user/:id')
   @UseGuards(AdminGuard)
   @Render('admin/user')
@@ -78,7 +83,17 @@ export class AdminController {
       user,
     };
   }
-
+  @Get('users/create')
+  @UseGuards(AdminGuard)
+  @Render('admin/create_user')
+  async createUserPage() {
+    return { title: 'Создать пользователя', layout: 'layouts/layout' };
+  }
+  @Post('user/create')
+  @Redirect('/admin/users?success=true')
+  async createUser(@Body() bd: CreateUserDto) {
+    await this.userService.createUser(bd);
+  }
   @Post('user/:id/edit')
   async editUser(
     @Param('id') id: string,
@@ -96,7 +111,6 @@ export class AdminController {
       });
     }
   }
-
   @Delete('user/:id/delete')
   async deleteUser(@Param('id') id: string) {
     const deleted = await this.userService.deleteUser(Number(id));
