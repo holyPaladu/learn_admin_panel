@@ -6,3 +6,8 @@
 .container {
   padding: 20px;
 }
+button {
+  all: unset;
+  display: inline-block; /* Чтобы работали размеры */
+  cursor: pointer; /* Вернуть курсор */
+}

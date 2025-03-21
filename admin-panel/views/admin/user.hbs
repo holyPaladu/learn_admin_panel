@@ -1,0 +1,48 @@
+{{!< layouts/layout}}
+
+<section class='user'>
+  <article class='user__header'>
+    <a href='/admin/users'>
+      <svg
+        width='32'
+        height='32'
+        viewBox='0 0 32 32'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <g clip-path='url(#clip0_2401_2)'>
+          <path
+            d='M20.5465 22.12L14.4398 16L20.5465 9.88L18.6665 8L10.6665 16L18.6665 24L20.5465 22.12Z'
+            fill='black'
+          />
+        </g>
+        <defs>
+          <clipPath id='clip0_2401_2'>
+            <rect width='32' height='32' fill='white' />
+          </clipPath>
+        </defs>
+      </svg>
+    </a>
+    <h2>User Id: {{user.id}}</h2>
+  </article>
+  <form method='POST' action='/admin/user/{{user.id}}/edit' class='form__base'>
+    {{#if error}}
+      <p class='error'>{{error}}</p>
+    {{/if}}
+    {{#each user as |value key|}}
+      {{#if (eq key 'name')}}
+        <div class='base__field'>
+          <label for='{{key}}'>{{key}}</label>
+          <input type='text' name='{{key}}' id='{{key}}' value='{{value}}' />
+        </div>
+      {{/if}}
+      {{#if (eq key 'email')}}
+        <div class='base__field'>
+          <label for='{{key}}'>{{key}}</label>
+          <input type='text' name='{{key}}' id='{{key}}' value='{{value}}' />
+        </div>
+      {{/if}}
+    {{/each}}
+    <button type='submit' class='base__btn'>Save Changes</button>
+  </form>
+</section>

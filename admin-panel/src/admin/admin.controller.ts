@@ -6,6 +6,8 @@ import {
   Req,
   Res,
   Render,
+  Param,
+  Body,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AdminGuard } from './guards/admin.guards';
@@ -61,6 +63,35 @@ export class AdminController {
       users,
       currentPath: req.url,
     };
+  }
+  @Get('user/:id')
+  @UseGuards(AdminGuard)
+  @Render('admin/user')
+  async getUser(@Param('id') id: string) {
+    const user = await this.userService.findOne(Number(id));
+    return {
+      title: `User ${user.id}`,
+      layout: 'layouts/layout',
+      user,
+    };
+  }
+
+  @Post('user/:id/edit')
+  async editUser(
+    @Param('id') id: string,
+    @Body() body: any,
+    @Res() response: Response,
+  ) {
+    try {
+      const updatedUser = await this.userService.update(Number(id), body);
+      return response.redirect(`/admin/user/${updatedUser.id}`);
+    } catch (error) {
+      return response.render('admin/user', {
+        error: 'Failed to update user. Please try again.',
+        user: await this.userService.findOne(Number(id)),
+        layout: 'layouts/layout',
+      });
+    }
   }
 
   // Защищённый маршрут: выход из админ-панели
