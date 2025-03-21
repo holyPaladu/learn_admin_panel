@@ -9,16 +9,18 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AdminGuard } from './guards/admin.guards';
+import { UsersService } from 'src/users/users.service';
 
 @Controller('admin')
 export class AdminController {
+  constructor(private readonly userService: UsersService) {}
+
   // Незащищённый маршрут: страница регистрации
   @Get('register')
   @Render('admin/register')
   showRegisterForm() {
     return { error: null, layout: 'layouts/auth' }; // Показываем форму без ошибки
   }
-
   // Незащищённый маршрут: обработка формы регистрации
   @Post('register')
   register(@Req() request: Request, @Res() response: Response) {
@@ -41,8 +43,24 @@ export class AdminController {
   @Get('dashboard')
   @UseGuards(AdminGuard)
   @Render('admin/dashboard')
-  dashboard() {
-    return { title: 'Admin', layout: 'layouts/layout' };
+  dashboard(@Req() req: Request) {
+    return {
+      title: 'Admin Dashboard',
+      layout: 'layouts/layout',
+      currentPath: req.url,
+    };
+  }
+  @Get('users')
+  @UseGuards(AdminGuard)
+  @Render('admin/users')
+  async users(@Req() req: Request) {
+    const users = await this.userService.getAll();
+    return {
+      title: 'Users list',
+      layout: 'layouts/layout',
+      users,
+      currentPath: req.url,
+    };
   }
 
   // Защищённый маршрут: выход из админ-панели

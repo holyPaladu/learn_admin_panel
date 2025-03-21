@@ -5,15 +5,161 @@ body {
   height: 100vh;
   display: flex;
 }
-.admin-nav {
-  width: 336px;
-  background-color: #f7f8fa;
-  box-shadow: 0 0 0 black;
-  border: 1px solid #dadee6;
-  padding: 1rem;
+
+:root {
+  --primary: #2563eb;
+  --black: #000000;
+  --white: #ffffff;
+  --bg-main: #f7f8fa;
+  --shadow-base: #606b800d;
+  --base-100: #dadee6;
+  --base-300: #98a1b3;
+  --base-400: #7a8499;
+  --base-600: #475166;
 }
 
 .admin-content {
-  width: 100%;
+  flex: 1;
+  padding: 2rem;
+}
+
+/*Sidebar admin*/
+.admin-nav {
+  width: 336px;
+  background-color: var(--bg-main);
+  box-shadow: 0 0 0 var(--black);
+  border: 1px solid var(--base-100);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sidebar__list {
+  list-style: none;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.sidebar__list li {
+  border-radius: 0.25rem;
+}
+.sidebar__list li a {
+  border-radius: 0.25rem;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 0.75rem;
+  padding-block: 0.375rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--black);
+}
+.sidebar__list li a svg path {
+  fill: var(--black);
+}
+.sidebar__list li:hover {
+  background-color: var(--primary);
+}
+.sidebar__list li:hover a {
+  color: var(--white);
+}
+.sidebar__list li:hover a svg path {
+  fill: var(--white);
+}
+.sidebar__list li a.active {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.sidebar__list li a.active svg path {
+  fill: var(--white);
+}
+
+/* Dashboard */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 0 0 var(--black);
+  border: 1px solid var(--base-100);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
   height: 100%;
+}
+.dashboard h2 {
+  font-size: 1.5rem;
+}
+
+/*Users*/
+.users {
+  border: 1px solid var(--base-100);
+  box-shadow: 0 0 0 var(--black);
+  border-radius: 0.25rem;
+  height: 100%;
+}
+.users__header {
+  border-bottom: 1px solid var(--base-100);
+  padding: 0 1rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+.users__header h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  color: var(--base-400);
+}
+.users__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+.users__list ol {
+  display: grid;
+  grid-template-columns: 7.5% 20% 30% 10% 32.5%;
+  height: 60px;
+  padding: 0 1rem;
+  align-items: center;
+  text-align: center;
+}
+.users__list li {
+  display: grid;
+  grid-template-columns: 7.5% 20% 30% 10% 32.5%;
+  background-color: var(--white);
+  border-radius: 0.375rem;
+  border: 1px solid var(--base-100);
+  padding: 0.875rem 1rem;
+}
+.users__list li span,
+.users__list ol span {
+  line-height: 166.67%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--base-600);
+  display: flex;
+  align-items: center;
+}
+.user__control {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+}
+.user__edit {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--base-100);
+  box-shadow: 0px 1px 4px 0px var(--shadow-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user__edit svg path {
+  fill: var(--base-300);
 }
