@@ -3,6 +3,9 @@
 <section class='users'>
   <article class='users__header'>
     <h2>Users</h2>
+    <a href='' class='base__btn'>
+      Создать пользавателя
+    </a>
   </article>
   <ul class='users__list'>
     <ol>
@@ -19,7 +22,7 @@
         <span>{{email}}</span>
         <span>{{role}}</span>
         <div class='user__control'>
-          <a href='/admin/user/{{id}}' class='user__edit'>
+          <a href='/admin/user/{{id}}' class='user__action'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               height='20px'
@@ -33,8 +36,31 @@
               />
             </svg>
           </a>
+          <button class='user__action delete__user' data-id='{{id}}'>
+            <svg
+              width='20'
+              height='20'
+              viewBox='0 0 32 32'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <g clip-path='url(#clip0_2407_2)'>
+                <path
+                  d='M7.99984 25.3333C7.99984 26.8 9.19984 28 10.6665 28H21.3332C22.7998 28 23.9998 26.8 23.9998 25.3333V9.33333H7.99984V25.3333ZM10.6665 12H21.3332V25.3333H10.6665V12ZM20.6665 5.33333L19.3332 4H12.6665L11.3332 5.33333H6.6665V8H25.3332V5.33333H20.6665Z'
+                  fill='black'
+                />
+              </g>
+              <defs>
+                <clipPath id='clip0_2407_2'>
+                  <rect width='32' height='32' fill='white' />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
         </div>
       </li>
     {{/each}}
   </ul>
 </section>
+
+<script src='/js/deleteUser.js'></script>

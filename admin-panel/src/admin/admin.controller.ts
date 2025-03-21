@@ -8,6 +8,9 @@ import {
   Render,
   Param,
   Body,
+  Delete,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { AdminGuard } from './guards/admin.guards';
@@ -92,6 +95,15 @@ export class AdminController {
         layout: 'layouts/layout',
       });
     }
+  }
+
+  @Delete('user/:id/delete')
+  async deleteUser(@Param('id') id: string) {
+    const deleted = await this.userService.deleteUser(Number(id));
+    if (!deleted) {
+      throw new HttpException('Пользователь не найден', HttpStatus.NOT_FOUND);
+    }
+    return { message: 'Пользователь удалён' };
   }
 
   // Защищённый маршрут: выход из админ-панели

@@ -35,4 +35,9 @@ export class UsersService {
     Object.assign(user, updateData);
     return this.usersRepository.save(user);
   }
+
+  async deleteUser(id: number) {
+    const result = await this.usersRepository.delete(id);
+    return (result.affected ?? 0) > 0;
+  }
 }

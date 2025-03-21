@@ -57,7 +57,7 @@ body {
   background-color: var(--primary-600);
   color: var(--primary-50);
   border-radius: 0.375rem;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 700;
   outline: none;
@@ -150,12 +150,16 @@ body {
   height: 4rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .users__header h2 {
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.25rem;
   color: var(--base-400);
+}
+.users__header a {
+  text-decoration: none;
 }
 .users__list {
   display: flex;
@@ -166,7 +170,7 @@ body {
 .users__list ol {
   display: grid;
   grid-template-columns: 7.5% 20% 30% 10% 32.5%;
-  height: 60px;
+  height: 3rem;
   padding: 0 1rem;
   align-items: center;
   text-align: center;
@@ -178,22 +182,27 @@ body {
   border-radius: 0.375rem;
   border: 1px solid var(--base-100);
   padding: 0.875rem 1rem;
+  align-items: center;
 }
-.users__list li span,
+.users__list li span {
+  line-height: 166.67%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--base-600);
+}
 .users__list ol span {
   line-height: 166.67%;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--base-600);
-  display: flex;
-  align-items: center;
+  text-align: center;
 }
 .user__control {
   display: flex;
   justify-content: end;
   gap: 0.5rem;
 }
-.user__edit {
+.user__action {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -203,7 +212,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.user__edit svg path {
+.user__action svg path {
   fill: var(--base-300);
 }
 
