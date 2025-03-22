@@ -114,7 +114,7 @@ export class AdminController {
   ) {
     try {
       const updatedUser = await this.userService.update(Number(id), body);
-      return response.redirect(`/admin/user/${updatedUser.id}`);
+      return response.redirect(`/admin/users`);
     } catch (error) {
       return response.render('admin/user', {
         error: 'Failed to update user. Please try again.',

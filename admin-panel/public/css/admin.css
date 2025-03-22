@@ -258,7 +258,6 @@ body {
   height: 3rem;
   padding: 0 1rem;
   align-items: center;
-  text-align: center;
 }
 .users__list li {
   display: grid;
@@ -280,7 +279,9 @@ body {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--base-600);
-  text-align: center;
+}
+.users__list ol span:last-of-type {
+  text-align: end;
 }
 .user__control {
   display: flex;
